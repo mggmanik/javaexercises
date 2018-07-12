@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ex5 {
@@ -12,22 +13,20 @@ public class ex5 {
 
         for(int i=0;i<n;i++)
         {
-            a[i]=in.nextInt();
-            sum+=a[i];
-        }
-        System.out.println(sum);
-
-        for(int i=0;i<n;i++)
-        {
             try
             {
-                Integer.parseInt(String.valueOf(a[i]));
-                System.out.println(a[i] + " is a valid integer number!");
-            }
-            catch (NumberFormatException e)
-            {
-                System.out.println(a[i] + " is not a valid integer number!");
+            a[i]=in.nextInt();
+            sum+=a[i];
+
+            Integer.parseInt(String.valueOf(a[i]));
+            System.out.println(a[i] + " is a valid integer number!");
+
+        }
+            catch (InputMismatchException e) {
+                System.out.println("Not a valid integer number! Can't carry on further");
+                break;
             }
         }
+        System.out.println("The Sum is: "+sum);
     }
 }
